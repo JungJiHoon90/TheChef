@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kosta.project.dao.IEvent_BoardDao;
-import com.kosta.project.dao.INotice_BoardDao;
 import com.kosta.project.dto.EventBoardCommentDto;
 import com.kosta.project.dto.EventBoardDto;
-import com.kosta.project.dto.NoticeBoardDto;
 
 @Controller
 public class Event_BoardFrontController {
