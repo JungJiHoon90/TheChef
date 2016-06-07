@@ -45,7 +45,7 @@
 					data-toggle="dropdown" id="dropdown3">Talk</a>
 					<ul id="dropdown-menu3" class="dropdown-menu">
 						<li><a href="#">요리톡</a></li>
-						<li><a href="#">수다톡</a></li>
+						<li><a href="TB_list">수다톡</a></li>
 					</ul></li>
 			</ul>
 			<a id="logo" href="index"><img alt="logo"

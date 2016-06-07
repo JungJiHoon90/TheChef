@@ -21,44 +21,40 @@
 				name="userinput" onsubmit="return checkIt()">
 				<h2>회원가입</h2>
 				<hr class="colorgraph">
-				<h5>아이디</h5>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
 							<input type="text" name="id" id="User_id"
-								class="form-control input-lg" placeholder="ID" tabindex="3"><br>
+								class="form-control input-lg" placeholder="아이디" tabindex="3" minlength="4"><br>
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<button type="button" id="btnCheckUid"
 							class="btn3d btn btn-default btn-lg" name="confirm_id">
-							<h5><span class="glyphicon glyphicon-ok"></span>중복확인</h5>
+							<h5><sp	an class="glyphicon glyphicon-ok"></span>중복확인</h5>
 						</button>
 					</div>
 				</div>
-				<h5>비밀번호</h5>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
 							<input type="password" name="password" id="password"
-								class="form-control input-lg" placeholder="Password"
-								tabindex="5">
+								class="form-control input-lg" placeholder="비밀번호"
+								tabindex="5" minlength="6">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div class="form-group">
 							<input type="password" name="password2"
 								id="password_confirmation" class="form-control input-lg"
-								placeholder="Confirm Password" tabindex="6">
+								placeholder="비밀번호 확인" tabindex="6" minlength="6">
 						</div>
 					</div>
 				</div>
-				<h5>이름</h5>
 				<div class="form-group">
 					<input type="text" name="name" id="name"
-						class="form-control input-lg" placeholder="Name" tabindex="3">
+						class="form-control input-lg" placeholder="이름" tabindex="3">
 				</div>
-				<h5>성별</h5>
 				<div class="form-group">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="active_btn btn btn-default active"> <input
@@ -74,14 +70,12 @@
 						</label>
 					</div>
 				</div>
-				<h5>이메일</h5>
-
-				<div class="row">
+				<div class="row" id="emailmargin">
 					<div class="col-xs-12 col-sm-6 col-md-6">
 						<div id="email_box" class="form-group">
 
 							<input type="text" name="e-mail1" id="e-mail"
-								class="form-control input-lg" placeholder="Email Address"
+								class="form-control input-lg" placeholder="이메일"
 								tabindex="4" />
 						</div>
 					</div>
@@ -99,8 +93,6 @@
 						</select>
 					</div>
 				</div>
-
-				<h5>연락처</h5>
 				<div class="row">
 					<div style="width: 23%; display: inline-block; padding-left: 15px">
 						<div class="form-group">
@@ -133,7 +125,7 @@
 					<div style="width: 35%; display: inline-block;">
 						<div class="form-group">
 							<input type="tel" name="phone2" id="phone"
-								class="form-control input-lg" maxlength="4">
+								class="form-control input-lg" maxlength="4" placeholder="연락처">
 						</div>
 					</div>
 					-
@@ -144,13 +136,12 @@
 						</div>
 					</div>
 				</div>
-				<h5>주소</h5>
 				<div class="row">
 					<div class="col-xs-12 col-sm-6 col-md-3">
 						<div class="form-group">
 							<input type="text" name="zip_code" id="address" size="5"
 								class="form-control input-lg" maxlength="5"
-								placeholder="zip code" tabindex="4">
+								placeholder="우편번호" tabindex="4" disabled="disabled">
 						</div>
 					</div>
 					<div class="col-xs-12 col-sm-6 col-md-6">
@@ -163,22 +154,18 @@
 				</div>
 				<div class="form-group">
 					<input type="text" name="address1" id="address"
-						class="form-control input-lg" maxlength="30" placeholder="address"
+						class="form-control input-lg" maxlength="30" placeholder="주소"
 						tabindex="4" disabled="disabled">
 				</div>
 				<div class="form-group">
 					<input type="text" name="address2" id="address"
-						class="form-control input-lg" maxlength="30" placeholder="address"
+						class="form-control input-lg" maxlength="30" placeholder="상세주소"
 						tabindex="4">
 				</div>
-
-				<h5>생일</h5>
 				<div class="form-group">
 					<input type="date" name="birth" class="form-control input-lg"
 						placeholder="생일">
 				</div>
-
-				<h5>구분</h5>
 				<div class="form-group">
 					<div class="btn-group" data-toggle="buttons">
 						<label class="active_btn btn btn-defatul active"> <input
@@ -194,7 +181,7 @@
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
-						<input type="submit" value="Register"
+						<input type="submit" value="회원가입"
 							class="btn btn-primary btn-block btn-lg" tabindex="7">
 					</div>
 				</div>

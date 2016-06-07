@@ -25,21 +25,19 @@
 			<form role="form" action="${loginURL}" method="post">
 				<h2>로그인</h2>
 				<hr class="colorgraph">
-				<h4>아이디</h4>
 				<div class="form-group">
 					<input type="text" name="username" id="id"
-						class="form-control input-lg" placeholder="Id" tabindex="1">
+						class="form-control input-lg" placeholder="아이디" tabindex="1">
 				</div>
-				<h4>비밀번호</h4>
 				<div class="form-group">
 					<input type="password" name="password" id="password"
-						class="form-control input-lg" placeholder="Password" tabindex="2">
+						class="form-control input-lg" placeholder="비밀번호" tabindex="2">
 				</div>
 
 				<hr class="colorgraph">
 				<div class="row">
 					<div class="col-xs-12 col-md-6">
-						<input type="submit" value="Login" class="btn btn-primary btn-block btn-lg" tabindex="3">
+						<input type="submit" value="로그인" class="btn btn-primary btn-block btn-lg" tabindex="3">
 					</div>
 				</div>
 				<span><a href="idFind">아이디 찾기</a> / <a href="#">비밀번호 찾기</a></span>

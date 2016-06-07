@@ -55,7 +55,5 @@
 	<script
 		src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 	<script src="//code.jquery.com/jquery.min.js"></script>
-	
-	<!-- test -->
 </body>
 </html>

@@ -168,7 +168,7 @@
                   </section>
                   <br><br>
                   <div class="text-center">
-                  	<iframe width="560" height="330" src="https://www.youtube.com/embed/${list.p_src}" frameborder="0" allowfullscreen></iframe>
+                  	<iframe width="890" height="500" src="https://www.youtube.com/embed/${list.p_src}" frameborder="0" allowfullscreen></iframe>
                   </div>
 
                </div>

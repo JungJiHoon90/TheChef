@@ -15,3 +15,11 @@
 #style-button {
 	height: 45px;
 }
+
+#emailmargin {
+	margin-bottom: 15px;
+}
+
+button>h5 {
+	margin: 0 auto;	
+}
