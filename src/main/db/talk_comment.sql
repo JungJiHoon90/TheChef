@@ -8,7 +8,7 @@ create table talk_comment(
 	REFERENCES talk_board(T_NO)	
 );
 drop sequence  COMMENT_SEQ_seq;
-create sequence COMMENT_SEQ;
+create sequence COMMENT_SEQ_seq;
 
 
  select * from talk_comment, talk_board where talk_comment.T_NO = talk_board.T_NO;

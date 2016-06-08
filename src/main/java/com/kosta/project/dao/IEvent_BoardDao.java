@@ -6,7 +6,6 @@ import java.util.List;
 import com.kosta.project.dto.CommentDTO;
 import com.kosta.project.dto.EventBoardCommentDto;
 import com.kosta.project.dto.EventBoardDto;
-import com.kosta.project.dto.NoticeBoardDto;
 
 public interface IEvent_BoardDao {
 	//목록보기
@@ -32,7 +31,7 @@ public interface IEvent_BoardDao {
 	//방명록 코멘트 저장
 	public int insertComment(EventBoardCommentDto cdto);	
 	//방명록 코멘트 조회
-	public List<CommentDTO> ListComment(String e_no);
+	public List<EventBoardCommentDto> ListComment(String e_no);
 	//방명록 코멘트 삭제	
 	public void commentDelete(String comment_seq);
 	//삭제시 댓글도 같이 삭제

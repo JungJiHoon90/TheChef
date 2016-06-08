@@ -3,7 +3,6 @@ package com.kosta.project.dto;
 import java.util.Date;
 
 public class EventBoardCommentDto {
-	
 	private String e_no;
 	private String comment_seq;
 	private String comment_name;

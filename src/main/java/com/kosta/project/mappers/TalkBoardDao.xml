@@ -3,176 +3,190 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- myBatis -->
-<mapper namespace="com.kosta.project.dao.Italk_boardDao">
+<mapper namespace="com.kosta.project.dao.IITalk_BoardDao">
 	<!-- 목록보기 -->
-	<select id="list" resultType="com.kosta.project.dto.TalkBoardDto" parameterType="java.util.HashMap">
-		select * from (select A.*,ROWNUM r from(select * from talk_board order by t_no desc) A) where r>=#{start} and r &lt;= #{end}
-	</select> 
+	<select id="list" resultType="com.kosta.project.dto.TalkBoardDto"
+		parameterType="java.util.HashMap">
+		select * from (select A.*,ROWNUM r from(select * from
+		talk_board order by t_no desc) A) where r>=#{start} and r &lt;= #{end}
+	</select>
 	<!-- 글쓰기 -->
 	<insert id="write" parameterType="com.kosta.project.dto.TalkBoardDto">
-		insert into
-		talk_board
+		insert into talk_board
 		values(talk_board_seq.nextval,#{t_title},#{t_writer},sysdate,0,#{t_contents})
 	</insert>
 	<!-- 상세보기 -->
-	<select id="contentView" parameterType="String" resultType="com.kosta.project.dto.TalkBoardDto">
+	<select id="contentView" parameterType="String"
+		resultType="com.kosta.project.dto.TalkBoardDto">
 		select * from talk_board where t_no=#{t_no}
 	</select>
 	<!-- 조회수증가 -->
 	<update id="readcount">
-		update talk_board set t_hit=t_hit+1 where t_no=#{t_no}
+		update talk_board set t_hit=t_hit+1 where
+		t_no=#{t_no}
 	</update>
 	<!-- 총게시물갯수받아오기 -->
 	<select id="getListCount" resultType="java.lang.Integer">
-		select count(*) from talk_board
+		select count(*) from
+		talk_board
 	</select>
 	<!-- 삭제하기 -->
 	<delete id="delete" parameterType="String">
-		delete talk_board where t_no=#{t_no}
+		delete talk_board where
+		t_no=#{t_no}
 	</delete>
 	<!-- 수정하기 -->
 	<update id="modify" parameterType="com.kosta.project.dto.TalkBoardDto">
-		update talk_board set t_writer=#{t_writer}, t_title=#{t_title}, t_contents=#{t_contents}
+		update talk_board set
+		t_writer=#{t_writer}, t_title=#{t_title}, t_contents=#{t_contents}
 		where t_no=#{t_no}
 	</update>
-	
+
 	<!-- back단에서 search -->
-	<select id="backpage_search_bytitle" resultType="com.kosta.project.dto.TalkBoardDto" parameterType="java.util.HashMap">
-		select * from (select * from (select A.*,ROWNUM r from(select * from talk_board order by t_no desc) A) where r>=#{start} and r &lt;= #{end}) 
+	<select id="backpage_search_bytitle" resultType="com.kosta.project.dto.TalkBoardDto"
+		parameterType="java.util.HashMap">
+		select * from (select * from (select A.*,ROWNUM r from(select * from
+		talk_board order by t_no desc) A) where r>=#{start} and r &lt;=
+		#{end})
 		<where>
-		<if test="dataForSearch !=''">
-			t_title like#{dataForSearch}		
-			<if test="dataFrom!='' and dataTo==''"> 
-				and t_regdate &gt; #{dataFrom}
+			<if test="dataForSearch !=''">
+				t_title like#{dataForSearch}
+				<if test="dataFrom!='' and dataTo==''">
+					and t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					and t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				and t_regdate &lt; #{dataTo}
+			<if test="dataForSearch == ''">
+				<if test="dataFrom!='' and dataTo==''">
+					or t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					or t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-			
-		</if>  
-		
-		<if test="dataForSearch == ''">
-			<if test="dataFrom!='' and dataTo==''">
-				or t_regdate &gt; #{dataFrom}
-			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				or t_regdate &lt; #{dataTo}
-			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>	
 		</where>
 	</select>
-	<select id="backpage_search_byno" resultType="com.kosta.project.dto.TalkBoardDto" parameterType="java.util.HashMap">
-		select * from (select * from (select A.*,ROWNUM r from(select * from talk_board order by t_no desc) A) where r>=#{start} and r &lt;= #{end}) 
+	<select id="backpage_search_byno" resultType="com.kosta.project.dto.TalkBoardDto"
+		parameterType="java.util.HashMap">
+		select * from (select * from (select A.*,ROWNUM r from(select * from
+		talk_board order by t_no desc) A) where r>=#{start} and r &lt;=
+		#{end})
 		<where>
-		<if test="dataForSearch !=''">
-			t_no like#{dataForSearch}		
-			<if test="dataFrom!='' and dataTo==''">
-				and t_regdate &gt; #{dataFrom}
+			<if test="dataForSearch !=''">
+				t_no like#{dataForSearch}
+				<if test="dataFrom!='' and dataTo==''">
+					and t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					and t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				and t_regdate &lt; #{dataTo}
+			<if test="dataForSearch == ''">
+				<if test="dataFrom!='' and dataTo==''">
+					or t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					or t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-			
-		</if>
-		
-		<if test="dataForSearch == ''">
-			<if test="dataFrom!='' and dataTo==''">
-				or t_regdate &gt; #{dataFrom}
-			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				or t_regdate &lt; #{dataTo}
-			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>	
 		</where>
-	</select> 
+	</select>
 	<!-- 뒷단에서 검색한게시물갯수받아오기 -->
-	<select id="getListCount_back1" resultType="java.lang.Integer" parameterType="java.util.HashMap">
-		select count(*) from talk_board 
+	<select id="getListCount_back1" resultType="java.lang.Integer"
+		parameterType="java.util.HashMap">
+		select count(*) from talk_board
 		<where>
-		<if test="dataForSearch !=''">
-			t_title like#{dataForSearch}
-			<if test="dataFrom!='' and dataTo==''">
-				and t_regdate &gt; #{dataFrom}
+			<if test="dataForSearch !=''">
+				t_title like#{dataForSearch}
+				<if test="dataFrom!='' and dataTo==''">
+					and t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					and t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				and t_regdate &lt; #{dataTo}
+			<if test="dataForSearch == ''">
+				<if test="dataFrom!='' and dataTo==''">
+					or t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					or t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>
-		<if test="dataForSearch == ''">
-			<if test="dataFrom!='' and dataTo==''">
-				or t_regdate &gt; #{dataFrom}
-			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				or t_regdate &lt; #{dataTo}
-			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>	
 		</where>
 	</select>
-	<select id="getListCount_back2" resultType="java.lang.Integer" parameterType="java.util.HashMap">
-		select count(*) from talk_board 
+	<select id="getListCount_back2" resultType="java.lang.Integer"
+		parameterType="java.util.HashMap">
+		select count(*) from talk_board
 		<where>
-		<if test="dataForSearch !=''">
-			t_no like#{dataForSearch}
-			<if test="dataFrom!='' and dataTo==''">
-				and t_regdate &gt; #{dataFrom}
+			<if test="dataForSearch !=''">
+				t_no like#{dataForSearch}
+				<if test="dataFrom!='' and dataTo==''">
+					and t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					and t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				and t_regdate &lt; #{dataTo}
+			<if test="dataForSearch == ''">
+				<if test="dataFrom!='' and dataTo==''">
+					or t_regdate &gt; #{dataFrom}
+				</if>
+				<if test="dataFrom=='' and dataTo!=''">
+					or t_regdate &lt; #{dataTo}
+				</if>
+				<if test="dataFrom!='' and dataTo!=''">
+					or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
+				</if>
 			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				and t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>
-		<if test="dataForSearch == ''">
-			<if test="dataFrom!='' and dataTo==''">
-				or t_regdate &gt; #{dataFrom}
-			</if>
-			<if test="dataFrom=='' and dataTo!=''">
-				or t_regdate &lt; #{dataTo}
-			</if>
-			<if test="dataFrom!='' and dataTo!=''">
-				or t_regdate &gt; #{dataFrom} and t_regdate &lt; #{dataTo}
-			</if>
-		</if>	
 		</where>
 	</select>
-	
+
 	<!-- 댓글입력 -->
-	<insert id="insertComment" parameterType="com.kosta.project.dto.CommentDTO">
-		insert into board_comment(t_no, COMMENT_SEQ, COMMENT_NAME,COMMENT_COMM,COMMENT_REGDATE)
+	<insert id="insertComment" parameterType="com.kosta.project.dto.TalkCommentDTO">
+		insert into
+		board_comment(t_no, COMMENT_SEQ,
+		COMMENT_NAME,COMMENT_COMM,COMMENT_REGDATE)
 		values(#{t_no},COMMENT_SEQ.nextval,#{comment_name},#{comment_comm},sysdate)
 	</insert>
 	<!-- 댓글 출력 -->
-	<select id="ListComment"  parameterType="String" resultType="com.kosta.project.dto.CommentDTO">
-				select * from talk_comment where t_no=#{t_no} order by t_no desc
+	<select id="ListComment" parameterType="String"
+		resultType="com.kosta.project.dto.TalkCommentDTO">
+		select * from talk_comment where t_no=#{t_no} order by t_no desc
 	</select>
 	<!-- 댓글 삭제 -->
 	<delete id="commentDelete" parameterType="String">
-			delete talk_comment where comment_seq = #{comment_seq}
-	
+		delete talk_comment where comment_seq = #{comment_seq}
+
 	</delete>
 	<!-- 삭제시 댓글삭제용도 -->
 	<delete id="deletecomment" parameterType="String">
-		delete talk_comment where T_NO=#{t_no}	
+		delete talk_comment
+		where T_NO=#{t_no}
 	</delete>
-	
-	 
+
+
 </mapper>

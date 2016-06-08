@@ -1,14 +1,14 @@
 
-drop table talk_board;
+drop table talk_board ;
 select * from talk_board;
 
 create table talk_board(
 	T_NO NUMBER primary key,
 	T_TITLE VARCHAR2(500),
-	T_WRITER varchar2(50),
+	T_WRITER VARCHAR2(500),
 	T_REGDATE TIMESTAMP,
-	T_Hit number(30),
-	T_Contents VARCHAR2(4000)
+	T_HIT NUMBER(30),
+	T_CONTENTS VARCHAR2(4000)
 );
 
 

@@ -60,9 +60,6 @@ h1{
           <li><a href="">공지사항</a></li>
       </ul>
       <h1 class="subtlt_h1">공지사항</h1>
-      
-      
-      
       <table width = "100%" class="nb" >
          
            <thead >

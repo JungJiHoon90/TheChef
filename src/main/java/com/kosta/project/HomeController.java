@@ -24,7 +24,7 @@ public class HomeController {
 
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	@Autowired
 	private View jsonview;
 
@@ -48,26 +48,27 @@ public class HomeController {
 
 	@RequestMapping("/join_members")
 	public String goInsert(MembersDTO mdto, RoleDTO rdto, HttpServletRequest request) {
-		mdto.setPhone(request.getParameter("phone1")+request.getParameter("phone2")+request.getParameter("phone3"));
-		mdto.setEmail(request.getParameter("e-mail1")+"@"+request.getParameter("email2"));
-		mdto.setAddress(request.getParameter("address1")+ " " +request.getParameter("address2"));
+		mdto.setPhone(request.getParameter("phone1") + request.getParameter("phone2") + request.getParameter("phone3"));
+		mdto.setEmail(request.getParameter("e-mail1") + "@" + request.getParameter("email2"));
+		mdto.setAddress(request.getParameter("address1") + " " + request.getParameter("address2"));
 		IMembersDAO imdao = sqlSession.getMapper(IMembersDAO.class);
 		imdao.insert(mdto);
 		System.out.println(request.getParameter("role_name"));
 		imdao.insertRole(rdto);
 		return "front.main.index";
 	}
-	
-	@RequestMapping(value="/useridok", method=RequestMethod.POST)
-	public View MemberOk(HttpServletRequest request, HttpServletResponse response, ModelMap map) throws ClassNotFoundException, SQLException{
+
+	@RequestMapping(value = "/useridok", method = RequestMethod.POST)
+	public View MemberOk(HttpServletRequest request, HttpServletResponse response, ModelMap map)
+			throws ClassNotFoundException, SQLException {
 		System.out.println("controller11111111111111111111111111");
 		String id = request.getParameter("id");
 		System.out.println(id);
 		IMembersDAO imdao = sqlSession.getMapper(IMembersDAO.class);
-		int result =  imdao.getUserid(id);
+		int result = imdao.getUserid(id);
 		System.out.println(result);
 		map.addAttribute("member", result);
-		
+
 		return jsonview;
 	}
 
@@ -76,31 +77,31 @@ public class HomeController {
 		System.out.println("home()");
 		return "front.main.index";
 	}
+
 	///////////////////////////////////////////////////////////////////////
-	@RequestMapping(value="/companyInfo")
-		public String companyInfo(){
+	@RequestMapping(value = "/companyInfo")
+	public String companyInfo() {
 		System.out.println("companyInfo()");
 		return "front.aboutus.companyInfo";
 	}
+
 	////////////////// back view/////////////////////////////////////////
-	/*@RequestMapping(value = "/recipeRegister")
-	public String recipeResgister(Locale locale, Model model) {
-		System.out.println("recipeRegister()");
-		return "back.storeManage.recipeRegister";
-	}
-
-	@RequestMapping(value = "/farmProductRegister")
-	public String farmProductRegister(Locale locale, Model model) {
-		System.out.println("farmProductRegister()");
-		return "back.storeManage.farmProductRegister";
-	}
-
-	@RequestMapping(value = "/productSelect_Modify")
-	public String productSelect_Modify(Locale locale, Model model) {
-		System.out.println("productSelect_Modify()");
-		return "back.storeManage.productSelect_Modify";
-	}
-*/
+	/*
+	 * @RequestMapping(value = "/recipeRegister") public String
+	 * recipeResgister(Locale locale, Model model) {
+	 * System.out.println("recipeRegister()"); return
+	 * "back.storeManage.recipeRegister"; }
+	 * 
+	 * @RequestMapping(value = "/farmProductRegister") public String
+	 * farmProductRegister(Locale locale, Model model) {
+	 * System.out.println("farmProductRegister()"); return
+	 * "back.storeManage.farmProductRegister"; }
+	 * 
+	 * @RequestMapping(value = "/productSelect_Modify") public String
+	 * productSelect_Modify(Locale locale, Model model) {
+	 * System.out.println("productSelect_Modify()"); return
+	 * "back.storeManage.productSelect_Modify"; }
+	 */
 	@RequestMapping(value = "/eventManage")
 	public String eventManage(Locale locale, Model model) {
 		System.out.println("eventManage()");
@@ -110,6 +111,12 @@ public class HomeController {
 	@RequestMapping(value = "/noticeManage")
 	public String noticeManage(Locale locale, Model model) {
 		System.out.println("noticeManage()");
+		return "back.storeManage.noticeManage";
+	}
+
+	@RequestMapping(value = "/talkManage")
+	public String talkManage(Locale locale, Model model) {
+		System.out.println("talkManage()");
 		return "back.storeManage.noticeManage";
 	}
 
@@ -136,12 +143,14 @@ public class HomeController {
 		System.out.println("orderSendManage()");
 		return "back.saleManage.orderSendManage";
 	}
-	//판매자에게 발주
-	@RequestMapping(value="/productOrder")
-	public String productOrder(Locale locale, Model model){
+
+	// 판매자에게 발주
+	@RequestMapping(value = "/productOrder")
+	public String productOrder(Locale locale, Model model) {
 		System.out.println("productOrder");
 		return "back.saleManage.productOrder";
 	}
+
 	@RequestMapping(value = "/returnManage")
 	public String returnManage(Locale locale, Model model) {
 		System.out.println("returnManage()");
@@ -159,16 +168,18 @@ public class HomeController {
 		System.out.println("SellerDealList()");
 		return "back.calculateManage.SellerDealList";
 	}
-	///////////////////////error////////////////////////
+
+	/////////////////////// error////////////////////////
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String error() {
 		return "front.member.error";
-	}	
+	}
+
 	/////////////////////// seller////////////////////////
 	@RequestMapping(value = "/sellerPage")
-	public String seller(Locale locale, Model model){
-	System.out.println("productAccept");
-	return "seller.accept.productAccept";
+	public String seller(Locale locale, Model model) {
+		System.out.println("productAccept");
+		return "seller.accept.productAccept";
 	}
 
 }
