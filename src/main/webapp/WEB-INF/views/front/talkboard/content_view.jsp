@@ -48,8 +48,8 @@ table.nb tr:last-child {
 
    <div id="wrap" class="table">  
       <table width="100%"  class="nb">
-         <form action="NB_modify_view" method="post">
-            <input type="hidden" name="n_no" value="${content_view.n_no}">
+         <form action="TB_modify_view" method="post">
+            <input type="hidden" name="t_no" value="${content_view.t_no}">
          <thead >
            <tr class="thead-inverse"> 
             <th width="40%">제목</th>
@@ -59,30 +59,28 @@ table.nb tr:last-child {
          </thead>
             
             <tr>
-               <td>${content_view.n_title}</td>
-               <td>${content_view.n_writer}</td>
+               <td>${content_view.t_title}</td>
+               <td>${content_view.t_writer}</td>
                <td>${fname}</td>
             </tr>
             <tr>
                <td colspan="3">
-                  ${content_view.n_contents}
+                  ${content_view.t_contents}
                </td>
             </tr>
             
             <tr>
                <td colspan="3">  
-                  <%-- <input type="submit" value="수정">&nbsp;&nbsp;
-                  <input type="button" value="삭제" onclick="location.href='NB_delete?n_no=${content_view.n_no}'"> --%>
-                  <input type="button" value="목록보기" onclick="location.href='NB_list'">
+                  <input type="button" value="목록보기" onclick="location.href='TB_list'">
                </td>
             </tr>
          </form>
       </table>
       
-      <form action="NB_content_view_comment" method="post">
+      <form action="TB_content_view_comment" method="post">
 		<div class="CenterGo" >
 			<se:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_COP')"><!-- 권한을 검사한다. 관리자나 일반 사용자, 판매자일 경우 -->
-			<se:authentication property="name" var="LoginUser" />
+			<se:authentication property="name" v.ar="LoginUser" />
 							<div align="center">
 				<div id="guestBook_upload">
 					<input type="hidden" name="n_no" value="${content_view.n_no}"/>
