@@ -3,7 +3,7 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- myBatis -->
-<mapper namespace="com.kosta.project.dao.IITalk_BoardDao">
+<mapper namespace="com.kosta.project.dao.ITalk_BoardDao">
 	<!-- 목록보기 -->
 	<select id="list" resultType="com.kosta.project.dto.TalkBoardDto"
 		parameterType="java.util.HashMap">
@@ -168,7 +168,7 @@
 	<!-- 댓글입력 -->
 	<insert id="insertComment" parameterType="com.kosta.project.dto.TalkCommentDTO">
 		insert into
-		board_comment(t_no, COMMENT_SEQ,
+		talk_comment(t_no, COMMENT_SEQ,
 		COMMENT_NAME,COMMENT_COMM,COMMENT_REGDATE)
 		values(#{t_no},COMMENT_SEQ.nextval,#{comment_name},#{comment_comm},sysdate)
 	</insert>

@@ -12,7 +12,7 @@
 
 <table width="500" cellpadding="0" cellspacing="0" border="1">
 		<form action="TB_modify" method="post">
-			<input type="hidden" name="t_title" value="${content_view.t_title}">
+			<input type="hidden" name="T_no" value="${content_view.t_no}">
 			<tr>
 				<td>번호</td>
 				<td>${content_view.t_no}</td>

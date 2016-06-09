@@ -127,6 +127,9 @@ h1 {
 				</td>
 			</tr>
 		</table>
+		
+		<button><a href="TB_write_view" style="text-decoration:none">글쓰기</a></button>
+		
 	</div>
 
 </body>

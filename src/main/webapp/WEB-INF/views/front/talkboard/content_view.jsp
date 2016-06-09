@@ -72,6 +72,10 @@ table.nb tr:last-child {
             <tr>
                <td colspan="3">  
                   <input type="button" value="목록보기" onclick="location.href='TB_list'">
+                  <input type="button" value="수정하기" onclick="location.href='TB_modify_view?t_no=${content_view.t_no}'">
+                  <input type="button" value="삭제" onclick="location.href='TB_delete?t_no=${content_view.t_no}'">
+                  
+                  
                </td>
             </tr>
          </form>
@@ -80,10 +84,10 @@ table.nb tr:last-child {
       <form action="TB_content_view_comment" method="post">
 		<div class="CenterGo" >
 			<se:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_COP')"><!-- 권한을 검사한다. 관리자나 일반 사용자, 판매자일 경우 -->
-			<se:authentication property="name" v.ar="LoginUser" />
-							<div align="center">
+			<se:authentication property="name" var="LoginUser" />
+				<div align="center">
 				<div id="guestBook_upload">
-					<input type="hidden" name="n_no" value="${content_view.n_no}"/>
+					<input type="hidden" name="t_no" value="${content_view.t_no}"/>
 					<input type="hidden" name="comment_name" value="${LoginUser}"/>
 					<input type="hidden" name="comment_seq" value="${LoginUser}"/>
 					
@@ -103,7 +107,7 @@ table.nb tr:last-child {
 								</td> --%>
 															
 								<td width="30%">
-									${ListComment.comment_name}	
+									${ListComment.comment_name}	 
 								</td>
 								<td width="60%">
 									${ListComment.comment_comm}						
@@ -111,7 +115,7 @@ table.nb tr:last-child {
 								<td width="30%">
 									
 								<%-- 	<c:if test="${m_id==guestBook.my_id}"> --%>
-											<input onclick="location.href='CM_delete?n_no=${content_view.n_no}&comment_seq=${ListComment.comment_seq}'" type="button" value="삭제" >
+											<input onclick="location.href='TCM_delete?t_no=${content_view.t_no}&comment_seq=${ListComment.comment_seq}'" type="button" value="삭제" >
 									<%-- </c:if> --%>
 									
 								</td>
