@@ -152,7 +152,7 @@ div {
 	</div>
 	<br>
 	<div id="content" class="form">
-		<form action="Cook_write" method="post" enctype="multipart/form-data">
+		<form action="cookRecipewrite" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="statusType">
 			<fieldset class="fieldSet_value">
 				<h3 class="">기본 정보</h3>
@@ -189,8 +189,7 @@ div {
 				<h4 class="">
 					<label>레시피 영상</label>
 				</h4>
-				<input type="text" name="k_src" id="k_src" title="주소" size="100"
-					required="required" placeholder="src"> <br> <br>
+				<input type="text" name="k_src" id="k_src" title="주소" size="100" placeholder="src"> <br> <br>
 				<div>
 					<input type="submit" class="btn_type2" value="상품등록"> <input
 						type="reset" class="btn_type2" value="취소">

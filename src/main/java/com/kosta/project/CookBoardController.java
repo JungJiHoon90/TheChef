@@ -234,11 +234,11 @@ public class CookBoardController {
 		model.addAttribute("endRow", new Integer(endRow));
 		model.addAttribute("allCount", new Integer(allCount));
 		model.addAttribute("pageSize", new Integer(pageSize));
-		model.addAttribute("cook_list", cook_list); // 해당하는 전체리스트
-		model.addAttribute("cook_onePageList", cook_onePageList); // 한페이지에
+		//model.addAttribute("Cook_list", cook_list); // 해당하는 전체리스트
+		model.addAttribute("Cook_onePageList", cook_onePageList); // 한페이지에
 																		// 출력될
 																		// 리스트
 
-		return "front.cookboard_cook_list";
+		return "front.cookboard.cook_list";
 	}
 }

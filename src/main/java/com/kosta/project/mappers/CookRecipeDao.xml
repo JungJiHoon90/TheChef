@@ -9,7 +9,7 @@
       insert into
       cook_recipe
       (k_title, id, k_no, k_contentFile, k_thumbFile, k_category, k_regdate, k_src)
-      values(#{k_title}, #{id}, #{k_no}, #{k_contentFile}, #{k_thumbFile}, #{k_category}, sysdate, #{k_src})
+      values(#{k_title}, #{id}, cookrecipe_seq.nextval, #{k_contentFile}, #{k_thumbFile}, #{k_category}, sysdate, #{k_src})
    </insert>   
    <!-- 요리톡 글삭제 -->
    <delete id="Cook_delete">

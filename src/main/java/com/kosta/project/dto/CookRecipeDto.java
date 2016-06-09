@@ -79,7 +79,7 @@ public class CookRecipeDto {
 		this.k_thumbFile = k_thumbFile;
 	}
 
-	public String getK_category1() {
+	public String getK_category() {
 		return k_category;
 	}
 

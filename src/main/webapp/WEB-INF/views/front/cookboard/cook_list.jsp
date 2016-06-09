@@ -11,22 +11,16 @@
 			<div class="col-xs-12 col-sm-6 col-md-3  imglist">
 				<div class="col-item">
 					<div class="photo">
-						<a href="Cook_details?k_no=${list.k_no}&code=${1}"><img src="upload/CookRecipe/${list.k_thumbFile}" class="img-responsive" alt="a" /></a>
+						<a href="Cook_details?k_no=${list.k_no}&code=${1}"><img
+							src="upload/CookRecipe/${list.k_thumbFile}"
+							class="img-responsive" alt="a" /></a>
 					</div>
 					<div class="info">
-
 						<div class="row namesize">
 							<div>
-								<h6>Recipe >> ${list.k_category1}</h6>
+								<h6>Recipe >> ${list.k_category}</h6>
 								<a href="Cook_details?k_no=${list.k_no}&code=${1}"><h5>${list.k_title}</h5></a>
 							</div>
-							<!-- <div class="rating hidden-sm col-md-6">
-                        <i class="price-text-color fa fa-star"></i>
-                        <i class="price-text-color fa fa-star"></i>
-                        <i class="price-text-color fa fa-star"></i>
-                        <i class="price-text-color fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                     </div> -->
 						</div>
 						<div class="separator clear-left">
 							<h5 id="listfont_size">
@@ -36,13 +30,11 @@
 									<se:authorize
 										access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_COP')">
 										<!-- 권한을 검사한다. 관리자나 일반 사용자, 판매자일 경우 -->
-										<a
-											href="cart?k_no=${list.k_no}&id=${LoginUser}&code=${1}"
-											class="hidden-sm">장바구니 담기</a>
+
 									</se:authorize>
 								</p>
 							</h5>
-							<p class="btn-details">$ </p>
+							<p class="btn-details">$</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -71,23 +63,23 @@
 						<c:set var="endPage" value="${pageCount}" />
 					</c:if>
 					<c:if test="${startPage>5}">
-						<a href="Cook_list?pageNum=${startPage-5}">[이전]</a>
+						<a href="cook_list?pageNum=${startPage-5}">[이전]</a>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 
 						<c:if test="${categoryValue=='no'}">
-							<a href="Cook_list?pageNum=${i}">[${i}]</a>
+							<a href="cook_list?pageNum=${i}">[${i}]</a>
 						</c:if>
 						<c:if test="${categoryValue!='no'}">
-							<a href="Cook_list?pageNum=${i}&k_category=${categoryValue}">[${i}]</a>
+							<a href="cook_list?pageNum=${i}&k_category=${categoryValue}">[${i}]</a>
 						</c:if>
 
 					</c:forEach>
 					<c:if test="${endPage<pageCount}">
-						<a href="Cook_list?pageNum=${startPage+5}">[다음]</a>
+						<a href="cook_list?pageNum=${startPage+5}">[다음]</a>
 					</c:if>
 				</c:if>
 			</td>
 		</tr>
-	</div>
+	</div> 
 </div>
